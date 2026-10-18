@@ -1,318 +1,165 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trust Pay</title>
-  <!-- Telegram Web App SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background-color: #f4f7fe;
-      color: #333;
-      padding-bottom: 70px;
-    }
-    /* Top Header */
-    .header {
-      background: linear-gradient(135deg, #1e6bf3, #0d47a1);
-      color: white;
-      padding: 20px 15px 40px 15px;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-      position: relative;
-    }
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .min-withdraw-badge {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 5px 12px;
-      border-radius: 15px;
-      font-size: 12px;
-    }
-    /* Profile Card */
-    .profile-card {
-      background: white;
-      margin: -25px 15px 15px 15px;
-      padding: 15px;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      position: relative;
-      z-index: 10;
-    }
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .avatar {
-      width: 45px;
-      height: 45px;
-      background: #1e6bf3;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 20px;
-    }
-    .balance-btn {
-      background: #1e6bf3;
-      color: white;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Tab Content */
-    .tab-content {
-      display: none;
-      padding: 0 15px;
-    }
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Grid Options (Home Page) */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 15px;
-    }
-    .grid-card {
-      background: white;
-      padding: 15px 10px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      cursor: pointer;
-    }
-    .grid-card i {
-      font-size: 24px;
-      color: #1e6bf3;
-      margin-bottom: 8px;
-    }
-    .grid-card p {
-      font-size: 13px;
-      font-weight: 600;
-      color: #444;
-    }
-
-    /* Cards & Alerts */
-    .info-card {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    .alert-box {
-      background: #ffebee;
-      border: 1px solid #ffcdd2;
-      color: #c62828;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
-
-    /* Bottom Navigation */
-    .navbar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      border-top: 1px solid #eee;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #777;
-      font-size: 11px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .nav-item.active {
-      color: #1e6bf3;
-    }
-    .nav-item i {
-      font-size: 18px;
-      margin-bottom: 3px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Pay</title>
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7fe;
+            color: #333;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e6bf3, #0d47a1);
+            color: white;
+            padding: 30px 20px 50px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        .user-card {
+            background: white;
+            margin: -30px 20px 20px 20px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .balance-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eef4ff;
+            border-radius: 12px;
+        }
+        .balance-title {
+            font-size: 14px;
+            color: #666;
+        }
+        .balance-amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e6bf3;
+        }
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 20px;
+            margin-top: 20px;
+        }
+        .btn-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-card:active {
+            transform: scale(0.95);
+        }
+        .btn-card i {
+            font-size: 28px;
+            color: #1e6bf3;
+        }
+        .btn-card span {
+            font-size: 15px;
+            font-weight: 600;
+            color: #444;
+        }
+        .main-btn {
+            background: #1e6bf3;
+            color: white;
+            width: calc(100% - 40px);
+            margin: 20px auto 0 auto;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(30, 107, 243, 0.3);
+        }
+        .main-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Top Header -->
-  <div class="header">
-    <div class="header-top">
-      <h2>Trust Pay</h2>
-      <span class="min-withdraw-badge">সর্বনিম্ন উইথড্র: 400.00 Tk</span>
+    <div class="header">
+        <h1>Trust Pay</h1>
+        <p>সহজে আয় করুন ও উইথড্র করুন</p>
     </div>
-  </div>
 
-  <!-- User Profile Banner -->
-  <div class="profile-card">
-    <div class="user-info">
-      <div class="avatar" id="user-avatar">A</div>
-      <div>
-        <h4 id="user-name">Arfat Mahim</h4>
-        <small id="user-id" style="color: #777;">8621755458</small>
-      </div>
+    <div class="user-card">
+        <h3 id="username">স্বাগতম, ব্যবহারকারী!</h3>
+        <div class="balance-box">
+            <div class="balance-title">আপনার বর্তমান ব্যালেন্স</div>
+            <div class="balance-amount"><span id="balance">0</span> BDT</div>
+        </div>
     </div>
-    <div class="balance-btn">
-      <i class="fa-solid fa-wallet"></i> <span id="user-balance">596.15</span>
-    </div>
-  </div>
 
-  <!-- TAB 1: HOME -->
-  <div id="tab-home" class="tab-content active">
-    <div class="grid-container">
-      <div class="grid-card" onclick="switchTab('tasks')">
-        <i class="fa-solid fa-circle-play"></i>
-        <p>Start Task</p>
-      </div>
-      <div class="grid-card">
-        <i class="fa-solid fa-user"></i>
-        <p>Profile</p>
-      </div>
-      <div class="grid-card">
-        <i class="fa-solid fa-display"></i>
-        <p>Work Video</p>
-      </div>
-      <div class="grid-card" onclick="switchTab('top')">
-        <i class="fa-solid fa-chart-column"></i>
-        <p>Top Users</p>
-      </div>
-      <div class="grid-card" onclick="switchTab('withdraw')">
-        <i class="fa-solid fa-money-bill-wave"></i>
-        <p>Withdraw</p>
-      </div>
-      <div class="grid-card">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        <p>History</p>
-      </div>
-      <div class="grid-card">
-        <i class="fa-solid fa-user-group"></i>
-        <p>Refer</p>
-      </div>
-      <div class="grid-card">
-        <i class="fa-solid fa-bullhorn"></i>
-        <p>Channel</p>
-      </div>
-      <div class="grid-card" onclick="switchTab('support')">
-        <i class="fa-solid fa-headset"></i>
-        <p>Support</p>
-      </div>
-    </div>
-  </div>
+    <button class="main-btn" onclick="claimReward()">
+        <i class="fa-solid fa-gift"></i> দৈনিক বোনাস গ্রহণ করুন
+    </button>
 
-  <!-- TAB 2: TASKS -->
-  <div id="tab-tasks" class="tab-content">
-    <div class="info-card">
-      <h3>আজকের কাজ</h3>
-      <p style="font-size:13px; color:#666; margin-top:5px;">টাস্ক কমপ্লিট করুন: <b>2 / 17</b></p>
-      <button style="margin-top:15px; width:100%; padding:10px; background:#1e6bf3; color:white; border:none; border-radius:10px; font-weight:bold;">টাস্ক শুরু করুন</button>
+    <div class="action-grid">
+        <button class="btn-card" onclick="handleClick('টাস্ক অপশন খুলছে...')">
+            <i class="fa-solid fa-list-check"></i>
+            <span>টাস্ক পূরণ</span>
+        </button>
+        <button class="btn-card" onclick="handleClick('রেফারেল লিংক তৈরি হচ্ছে...')">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>রেফার করুন</span>
+        </button>
+        <button class="btn-card" onclick="handleClick('উইথড্র অপশনে পাঠাচ্ছি...')">
+            <i class="fa-solid fa-wallet"></i>
+            <span>উইথড্র</span>
+        </button>
+        <button class="btn-card" onclick="handleClick('হেল্প সেন্টারে যোগাযোগ করুন')">
+            <i class="fa-solid fa-headset"></i>
+            <span>সাহায্য</span>
+        </button>
     </div>
-  </div>
 
-  <!-- TAB 3: TOP USERS -->
-  <div id="tab-top" class="tab-content">
-    <div class="info-card">
-      <h3>সর্বোচ্চ ইনকামকারী (Top Users)</h3>
-      <p style="font-size:13px; color:#666; margin-top:10px;">১. Arfat Mahim - ৳৫৯৬.১৫</p>
-      <p style="font-size:13px; color:#666; margin-top:5px;">২. Siyam - ৳৫১৩.০০</p>
-    </div>
-  </div>
+    <script>
+        // Telegram WebApp SDK Initialize
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Full screen app
 
-  <!-- TAB 4: SUPPORT -->
-  <div id="tab-support" class="tab-content">
-    <div class="info-card">
-      <h3>সহায়তা সেন্টার</h3>
-      <p style="font-size:13px; color:#666; margin-top:5px;">যে কোনো সমস্যার জন্য আমাদের সাপোর্ট চ্যানেলে যুক্ত হন।</p>
-    </div>
-  </div>
+        // Load User Data
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('username').innerText = "স্বাগতম, " + tg.initDataUnsafe.user.first_name + "!";
+        }
 
-  <!-- TAB 5: WITHDRAW -->
-  <div id="tab-withdraw" class="tab-content">
-    <div class="alert-box">
-      <i class="fa-solid fa-circle-exclamation"></i> <b>উইথড্র করার জন্য আপনার কমপক্ষে ৭ জন এক্টিভ রেফার প্রয়োজন।</b>
-    </div>
-    <div class="info-card">
-      <h4>পেপমেন্ট মেথড সিলেক্ট করুন</h4>
-      <p style="font-size:13px; color:#666; margin-top:10px;">বিকাশ / নগদ / রকেট</p>
-    </div>
-  </div>
+        let currentBalance = 0;
 
-  <!-- Bottom Navigation -->
-  <div class="navbar">
-    <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
-      <i class="fa-solid fa-house"></i>
-      <span>Home</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('tasks')" id="nav-tasks">
-      <i class="fa-solid fa-circle-check"></i>
-      <span>Tasks</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('top')" id="nav-top">
-      <i class="fa-solid fa-trophy"></i>
-      <span>Top</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('support')" id="nav-support">
-      <i class="fa-solid fa-headset"></i>
-      <span>Support</span>
-    </div>
-    <div class="nav-item" onclick="switchTab('withdraw')" id="nav-withdraw">
-      <i class="fa-solid fa-wallet"></i>
-      <span>Withdraw</span>
-    </div>
-  </div>
+        function claimReward() {
+            currentBalance += 10;
+            document.getElementById('balance').innerText = currentBalance;
+            tg.showAlert("অভিনন্দন! আপনি ১০ BDT বোনাস পেয়েছেন।");
+        }
 
-  <script>
-    // Initialize Telegram WebApp
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // Full screen open
-
-    // Fetch user details from Telegram
-    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-      const user = tg.initDataUnsafe.user;
-      document.getElementById('user-name').innerText = user.first_name + (user.last_name ? ' ' + user.last_name : '');
-      document.getElementById('user-id').innerText = user.id;
-      document.getElementById('user-avatar').innerText = user.first_name.charAt(0).toUpperCase();
-    }
-
-    // Switch Bottom Navigation Tabs
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-
-      document.getElementById('tab-' + tabName).classList.add('active');
-      document.getElementById('nav-' + tabName).classList.add('active');
-    }
-  </script>
+        function handleClick(message) {
+            tg.showAlert(message);
+        }
+    </script>
 </body>
 </html>
